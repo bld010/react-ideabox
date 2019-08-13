@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ideas from './Ideas.js';
+import IdeaForm from './IdeaForm.js';
 import './App.css';
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <main className="App">
         <h1>IdeaBox</h1>
+        <IdeaForm />
         <Ideas ideas={this.state.ideas} />
       </main>
     );
