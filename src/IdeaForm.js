@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class IdeaForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: '',
       description: ''
@@ -11,6 +11,12 @@ class IdeaForm extends Component {
 
   handleChange = e => {
     this.setState({[e.target.name]: e.target.value }) 
+  }
+
+  submitIdea = (e) => {
+    e.preventDefault();
+    this.props.addIdea(this.state);
+    this.setState({title: '', description: ''})
   }
 
   render() {
@@ -30,7 +36,7 @@ class IdeaForm extends Component {
           type="text" 
           placeholder="Description" 
         />
-        <button>Add Idea</button>
+        <button onClick={e => this.submitIdea(e)} >Add Idea</button>
       </form>
     ) 
   }

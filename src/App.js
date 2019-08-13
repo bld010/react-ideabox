@@ -13,13 +13,21 @@ class App extends Component {
         { id: 3, title: 'Learn a martial art', description: 'To exact vengeance upon my enemies' },
       ]
     };
+    this.addIdea = this.addIdea.bind(this);
+  }
+
+  addIdea(newIdea) {
+    newIdea = {id: (this.state.ideas.length+1), title: newIdea.title, description: newIdea.description}
+    this.setState({
+      ideas: [...this.state.ideas, newIdea]
+    })
   }
 
   render() {
     return (
       <main className="App">
         <h1>IdeaBox</h1>
-        <IdeaForm />
+        <IdeaForm addIdea={this.addIdea} />
         <Ideas ideas={this.state.ideas} />
       </main>
     );
