@@ -17,9 +17,20 @@ class App extends Component {
   }
 
   addIdea(newIdea) {
-    newIdea = {id: (this.state.ideas.length+1), title: newIdea.title, description: newIdea.description}
+    newIdea = {
+      id: Date.now(), 
+      key: Date.now(), 
+      title: newIdea.title, 
+      description: newIdea.description}
     this.setState({
       ideas: [...this.state.ideas, newIdea]
+    })
+  }
+
+  deleteIdea(idOfCardToDelete) {
+    console.log(idOfCardToDelete)
+    this.setState({
+      ideas: this.state.ideas.filter(idea => idea.id !== idOfCardToDelete)
     })
   }
 
@@ -28,7 +39,7 @@ class App extends Component {
       <main className="App">
         <h1>IdeaBox</h1>
         <IdeaForm addIdea={this.addIdea} />
-        <Ideas ideas={this.state.ideas} />
+        <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea.bind(this)} />
       </main>
     );
   }

@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Idea = (props) => {
+const Idea = ({ title, description, deleteIdea, id }) => {
+
   return (
     <div className="idea">
-      <h3>{props.idea.title}</h3>
-      <p>{props.idea.description}</p>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <button onClick={() => deleteIdea(id)}>x</button>
     </div>
   )
 }
